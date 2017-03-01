@@ -1,0 +1,13 @@
+<h1>{{ heading }}</h1>
+
+<p>{{ message}}</p>
+
+{{ $scope.movies }}
+
+<div ng-repeat="movie in movies">
+	<b>{{ movie.title }}</b><br />
+	<b>{{ movie.referral }}</b><br />
+	<b>{{ movie.rank }}</b><br />
+</div>
+
+{{movies[1].title}}
