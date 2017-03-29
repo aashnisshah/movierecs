@@ -6,5 +6,9 @@ angularApp.controller('MainCtrl', [
 		var firebase = new Firebase("https://movies-84898.firebaseio.com/movies");
 		var syncObject = $firebaseObject(firebase);
 		syncObject.$bindTo($scope, "movies");
+
+		$scope.search = function(movie) {
+			console.log(movie);
+		}
 	}
 ]);
