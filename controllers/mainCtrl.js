@@ -16,14 +16,19 @@ angularApp.controller('MainCtrl', [
 			$http.get(queryString)
 				.then(
 					function(response) {
-						$scope.details = response.data;
-						console.log($scope.details);
-			});
+						var details = response.data;
+						console.log(details);
+						$scope.searchResults = details;
+					}
+				);
 		}
 
 		$scope.search = function(movie) {
+			$scope.displaySearchResults = false;
 			console.log("Begin querying for " + movie.name);
-			searchMovies(movie.name);
+			$scope.searchResults = searchMovies(movie.name);
+			$scope.displaySearchResults = true;
+			console.log($scope.searchResults);
 		}
 	}
 ]);

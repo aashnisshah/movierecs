@@ -8,6 +8,12 @@
 
 	</div>
 
+	<div  ng-if="displaySearchResults">
+		<div ng-repeat="results in searchResults.results">
+			{{ results.title }}
+		</div>
+	</div>
+
 
 	<table class="table table-hover">
 		<thead>
