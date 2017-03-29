@@ -11,17 +11,19 @@ angularApp.controller('MainCtrl', [
 		var syncObject = $firebaseObject(firebase);
 		syncObject.$bindTo($scope, "movies");
 
-		$scope.search = function(movie) {
-			console.log("Begin querying for " + movie.name);
-
-			var queryString = "https://api.themoviedb.org/3/search/movie?api_key=" + $scope.api_key + "&language=en-US&query=" + movie.name + "";
+		function searchMovies(movieName) {
+			var queryString = "https://api.themoviedb.org/3/search/movie?api_key=" + $scope.api_key + "&language=en-US&query=" + movieName + "";
 			$http.get(queryString)
 				.then(
 					function(response) {
 						$scope.details = response.data;
 						console.log($scope.details);
-				});
+			});
+		}
 
+		$scope.search = function(movie) {
+			console.log("Begin querying for " + movie.name);
+			searchMovies(movie.name);
 		}
 	}
 ]);
